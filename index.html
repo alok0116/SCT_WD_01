@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Navbar</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        height: 2000px; /* for scroll demo */
+    }
+
+    /* NAVBAR */
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 15px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: transparent;
+        transition: all 0.4s ease;
+        z-index: 1000;
+    }
+
+    /* Scroll Effect */
+    nav.scrolled {
+        background: #222;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        padding: 10px 50px;
+    }
+
+    /* Logo */
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    /* Menu */
+    ul {
+        list-style: none;
+        display: flex;
+    }
+
+    ul li {
+        margin-left: 30px;
+    }
+
+    ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
+        position: relative;
+        transition: color 0.3s;
+    }
+
+    /* Hover underline animation */
+    ul li a::after {
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background: #00ffcc;
+        transition: width 0.3s;
+    }
+
+    ul li a:hover {
+        color: #00ffcc;
+    }
+
+    ul li a:hover::after {
+        width: 100%;
+    }
+
+    /* Background section for visibility */
+    .hero {
+        height: 100vh;
+        background: linear-gradient(to right, #667eea, #764ba2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 40px;
+    }
+</style>
+
+</head>
+<body>
+
+<nav id="navbar">
+    <div class="logo">MySite</div>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="hero">
+    Scroll Down 
+</div>
+
+<script>
+    const navbar = document.getElementById("navbar");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
+        }
+    });
+</script>
+
+</body>
+</html>
